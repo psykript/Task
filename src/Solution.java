@@ -55,6 +55,7 @@ class Reader {
             buffer = Files.readAllLines(Paths.get(fileName));
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("\n File not found");
         }
     }
 }
@@ -89,7 +90,9 @@ final class Sorter {
                         return o2.length() - o1.length();
                     }
                 }
+                System.out.println("\n Sort module error");
                 return 0;
+
             }
         });
     }
@@ -125,7 +128,7 @@ class Compositor {
         if (draftBook.isEmpty()) return false;
         boolean[] chars = new boolean[paje.length() + 1];
         chars[0] = true;
-        for (int i = 1; i <= paje.length(); i++) {
+        for (int i = 0; i <= paje.length(); i++) {
             for (int j = 0; j < i ; j++) {
                 if (chars[j]==false) {
                     continue;
@@ -175,6 +178,7 @@ class Resulter {
             } while (Result[2] == null);
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("\n The book doesn't have compound words shorter than the first word");
         }
     }
 }
